@@ -3,7 +3,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./landing-page.css";
 
-import { staticData } from "./staticData";
 import { useInfinityScroll } from "../../api";
 
 import { JobCard, UseJobFilter } from "../../components";
@@ -12,11 +11,10 @@ function LandingPage() {
   const { filter, renderFilter } = UseJobFilter();
   const [params, setParams] = useState({ limit: 9, offset: 0 });
 
-  const { data, fetchNextPage, hasNextPage, isLoading, total } =
-    useInfinityScroll({
-      url: "adhoc/getSampleJdJSON",
-      body: { limit: 9, offset: 0 },
-    });
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfinityScroll({
+    url: "adhoc/getSampleJdJSON",
+    body: { limit: 9, offset: 0 },
+  });
 
   return (
     <div className="job-list">

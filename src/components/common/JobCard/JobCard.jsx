@@ -18,7 +18,6 @@ export function JobCard({ jobData }) {
           src={jobData?.logoUrl}
           loading="lazy"
         />
-        {/* <div className="job-card-company-logo"></div> */}
         <div className="job-card-company-details">
           <p className="job-card-company-name">{jobData?.companyName}</p>
           <p className="job-card-company-position">{jobData?.jobRole}</p>
@@ -39,7 +38,9 @@ export function JobCard({ jobData }) {
       <p className="job-card-company-name job-min-experience">
         Minimum Experience
       </p>
-      <p className="job-jd-experience">{jobData?.minExp} Years</p>
+      <p className="job-jd-experience">
+        {jobData?.minExp ? jobData?.minExp + " Years" : "Years not mentioned"}
+      </p>
       <div className="job-card-action">
         <Button label={"Easy Apply"} />
         <Button
