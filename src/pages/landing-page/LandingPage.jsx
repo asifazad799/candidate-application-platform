@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./landing-page.css";
@@ -18,26 +18,17 @@ function LandingPage() {
       body: { limit: 9, offset: 0 },
     });
 
-  const handleNextPageCall = () => {
-    return new Promise((resolve, reject) => {
-      try {
-        setParams((prev) => ({ ...prev, offset: prev.offset + 9 }));
-        resolve();
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
-
   return (
     <div className="job-list">
       {renderFilter()}
       <InfiniteScroll
         dataLength={data?.length}
         next={() => {
-          handleNextPageCall().then(() => {
-            fetchNextPage({ pageParam: { offset: params.offset + 9 } });
-          });
+          fetchNextPage({ pageParam: { offset: params.offset + 9 } }).then(
+            () => {
+              setParams((prev) => ({ ...prev, offset: prev.offset + 9 }));
+            }
+          );
         }}
         hasMore={hasNextPage}
         loader={isLoading && <h4>Loading...</h4>}
@@ -48,7 +39,7 @@ function LandingPage() {
         }
         style={{ width: "100%" }}
         className="job-list-container"
-        // height={"800px"}
+        // height={"800px"} use height to customize the height
       >
         {data?.map((jd) => {
           return <JobCard key={jd?.jdUid} jobData={jd} />;
