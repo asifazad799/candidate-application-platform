@@ -1,5 +1,28 @@
 .common-button {
   border-radius: 8px;
   border: none;
-  min-height: 40px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: var(--primary-color);
+}
+
+.common-button-secondary {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.common-button-label {
+  font-size: 18px !important;
+  font-weight: 500;
+  letter-spacing: 0.5px !important;
+  color: black;
+}
+
+.common-button-secondary-label {
+  font-size: 15px !important;
+  font-weight: 300;
+  color: white;
 }

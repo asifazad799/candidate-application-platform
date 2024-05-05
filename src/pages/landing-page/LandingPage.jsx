@@ -55,7 +55,12 @@ function LandingPage() {
           </p>
           <p className="job-jd-experience">2 Years</p>
           <div className="job-card-action">
-            <Button />
+            <Button label={"Easy Apply"} />
+            <Button
+              label={"Unlock referral asks"}
+              className={"common-button-secondary"}
+              labelClassName={"common-button-secondary-label"}
+            />
           </div>
         </div>
       </div>

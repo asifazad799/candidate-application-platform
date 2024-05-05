@@ -5,6 +5,8 @@
   padding: 0;
   font-size: 14px !important;
   letter-spacing: 0.2px !important;
+  --primary-color: rgb(75, 219, 188);
+  --secondary-color: rgb(29, 50, 145);
 }
 
 /* Define font-family */
