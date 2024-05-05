@@ -50,10 +50,6 @@ export function UseJobFilter() {
     setFilter((prev) => ({ ...prev, [key]: value }));
   };
 
-  useEffect(() => {
-    console.log(filter, "shshsh");
-  }, [filter]);
-
   const renderFilter = () => {
     return (
       <div className="job-filter-container">
