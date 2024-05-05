@@ -2,14 +2,12 @@ import React from "react";
 
 import "./landing-page.css";
 
-import { CustomAutocomplete } from "../../components";
+import { UseJobFilter } from "../../components";
 
 function LandingPage() {
-  return (
-    <div>
-      <CustomAutocomplete />
-    </div>
-  );
+  const { filter, renderFilter } = UseJobFilter();
+
+  return <div>{renderFilter()}</div>;
 }
 
 export default LandingPage;

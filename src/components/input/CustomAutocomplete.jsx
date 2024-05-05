@@ -5,14 +5,14 @@ import "./custom-autocomplete.css";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-export function CustomAutocomplete({ options, ...props }) {
+export function CustomAutocomplete({ options, label, ...props }) {
   return (
     <Autocomplete
       multiple
-      limitTags={2}
+      limitTags={1}
       options={options || top100Films}
       // groupBy={(option) => option.year}
-      renderInput={(params) => <TextField {...params} label="Autocomplete" />}
+      renderInput={(params) => <TextField {...params} label={label} />}
       getOptionLabel={(option) => option?.title}
       ListboxProps={{
         "aria-labelledby": "nested-list-subheader",
