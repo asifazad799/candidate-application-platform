@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useInfiniteQuery } from "react-query";
 
-const fetchData = async ({ meta, queryKey, pageParam, signal }) => {
-  // console.log(meta, queryKey, pageParam, signal, "sshhsh");
-
+const fetchData = async ({ queryKey }) => {
+  const data = queryKey[0];
   const response = await axios.post(
     `https://api.weekday.technology/${queryKey[0]}`,
-    queryKey[1]
+    data
   );
   return response.data;
 };
@@ -17,6 +16,7 @@ export function useInfinityScroll({ url, body }) {
       getNextPageParam: (lastPage, pages) => {
         return pages.length + 1;
       },
+      enabled: false,
     });
 
   console.log(data, hasNextPage, "shsh");
