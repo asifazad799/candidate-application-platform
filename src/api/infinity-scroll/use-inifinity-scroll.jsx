@@ -21,7 +21,7 @@ export function useInfinityScroll({ url, body }) {
         return pages.length + 1;
       },
       //TODO: enable this when the api is ready
-      enabled: false,
+      // enabled: false,
     });
 
   const _data = [];

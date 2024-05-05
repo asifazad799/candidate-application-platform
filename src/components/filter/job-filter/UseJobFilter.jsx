@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useClientSideDataFilter, useDebouncedValue } from "../../../hooks";
+import { useDebouncedValue } from "../../../hooks";
 
 import "./job-filter-container.css";
 
@@ -49,8 +49,6 @@ export function UseJobFilter({ data }) {
   const handleChange = ({ key, value }) => {
     setFilter((prev) => ({ ...prev, [key]: value }));
   };
-
-  const {} = useClientSideDataFilter({ data: data, filter: filter });
 
   const renderFilter = () => {
     return (

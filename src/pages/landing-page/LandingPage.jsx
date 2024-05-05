@@ -15,7 +15,9 @@ function LandingPage() {
     url: "adhoc/getSampleJdJSON",
     body: { limit: 9, offset: 0 },
   });
-  const { filter, renderFilter } = UseJobFilter({ data: data });
+  const { filter, renderFilter } = UseJobFilter({});
+
+  const {} = useClientSideDataFilter({ data: data, filter: filter });
 
   return (
     <div className="job-list">
