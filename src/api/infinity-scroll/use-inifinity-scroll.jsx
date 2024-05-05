@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useInfiniteQuery } from "react-query";
 
-const fetchData = async ({ queryKey }) => {
-  const data = queryKey[0];
+const fetchData = async ({ queryKey, pageParam }) => {
+  const data = queryKey[1];
+  if (pageParam) {
+    data.offset = pageParam.offset;
+  }
+  console.log(pageParam, "sshhsh");
+
   const response = await axios.post(
     `https://api.weekday.technology/${queryKey[0]}`,
     data
@@ -16,16 +21,19 @@ export function useInfinityScroll({ url, body }) {
       getNextPageParam: (lastPage, pages) => {
         return pages.length + 1;
       },
-      enabled: false,
     });
 
-  console.log(data, hasNextPage, "shsh");
+  const _data = [];
+  data?.pages?.map((data) => {
+    _data.push(...data.jdList);
+  });
 
   return {
-    data,
+    data: _data || [],
     fetchNextPage,
     hasNextPage,
     isLoading: isFetching || isLoading,
     isError,
+    total: _data?.totalCount,
   };
 }
