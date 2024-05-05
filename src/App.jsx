@@ -7,8 +7,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./App.css";
 
-import { UnProtectedRoutes } from "./routes";
-
 //pages
 const LandingPage = lazy(() => import("./pages/landing-page/LandingPage"));
 
@@ -18,9 +16,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <BrowserRouter>
           <Routes>
-            <Route element={<UnProtectedRoutes />}>
-              <Route path="/" element={<LandingPage />} />
-            </Route>
+            <Route path="/" element={<LandingPage />} />
           </Routes>
         </BrowserRouter>
       </Suspense>
