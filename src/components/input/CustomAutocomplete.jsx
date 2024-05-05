@@ -1,4 +1,7 @@
 import * as React from "react";
+
+import "./custom-autocomplete.css";
+
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
@@ -14,6 +17,7 @@ export function CustomAutocomplete({ options, ...props }) {
       ListboxProps={{
         "aria-labelledby": "nested-list-subheader",
       }}
+      className="autocomplete"
       {...props}
     />
   );

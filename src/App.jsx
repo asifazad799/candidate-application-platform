@@ -12,7 +12,7 @@ const LandingPage = lazy(() => import("./pages/landing-page/LandingPage"));
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Suspense fallback={<div>Loading...</div>}>
         <BrowserRouter>
           <Routes>
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </Suspense>
-    </>
+    </div>
   );
 }
 
