@@ -2,5 +2,12 @@
   display: flex;
   gap: 13px;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
+  top: 0;
+  background: white;
+  z-index: 100;
+  padding-block: 14px;
+  position: fixed;
+  width: 100%;
+  left: 0;
 }
