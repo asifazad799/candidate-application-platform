@@ -4,17 +4,18 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import "./landing-page.css";
 
 import { useInfinityScroll } from "../../api";
+import { useClientSideDataFilter } from "../../hooks";
 
 import { JobCard, UseJobFilter } from "../../components";
 
 function LandingPage() {
-  const { filter, renderFilter } = UseJobFilter();
   const [params, setParams] = useState({ limit: 9, offset: 0 });
 
   const { data, fetchNextPage, hasNextPage, isLoading } = useInfinityScroll({
     url: "adhoc/getSampleJdJSON",
     body: { limit: 9, offset: 0 },
   });
+  const { filter, renderFilter } = UseJobFilter({ data: data });
 
   return (
     <div className="job-list">
