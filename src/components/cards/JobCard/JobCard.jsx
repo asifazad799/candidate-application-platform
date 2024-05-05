@@ -2,7 +2,7 @@ import React from "react";
 
 import "./job-card.css";
 
-import { Button } from "../Button";
+import { Button } from "../../common/Button";
 import HourglassEmptyIcon from "@mui/icons-material/HourglassEmpty";
 
 export function JobCard({ jobData }) {
