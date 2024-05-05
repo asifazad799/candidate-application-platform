@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import { useDebouncedValue } from "../../../../hooks";
+import { useDebouncedValue } from "../../../hooks";
 
 import "./job-filter-container.css";
 
-import { CustomAutocomplete, TextInput } from "../../../input";
+import { CustomAutocomplete, TextInput } from "../../input";
 
 const filterStatic = {
   jobRole: [

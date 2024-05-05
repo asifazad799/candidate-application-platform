@@ -1,0 +1,123 @@
+.job-list-container {
+  display: flex;
+  gap: 13px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* card styles */
+.job-card {
+  width: 370px;
+  height: 600px;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0px 1px 38px -2px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+}
+
+.job-post-time {
+  border-radius: 40px;
+  box-shadow: 0px 1px 18px -2px rgba(0, 0, 0, 0.15);
+  height: 35px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-inline: 15px;
+  width: fit-content;
+  gap: 5px;
+}
+.job-time-text {
+  font-size: 10px !important;
+  font-weight: 300;
+}
+.job-card-company {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+}
+.job-card-company-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: aquamarine;
+}
+.job-card-company-details {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.job-card-company-name {
+  font-size: 13px !important;
+  font-weight: 500;
+  color: rgb(163, 161, 161);
+  letter-spacing: 0.4px !important;
+}
+.job-card-company-position {
+  font-weight: 300;
+}
+.job-card-company-location {
+  font-size: 12px !important;
+  font-weight: 300;
+}
+.job-salary {
+  font-size: 13px !important;
+  font-weight: 500;
+  color: rgb(119, 119, 119);
+  margin-top: 10px;
+}
+.job-about {
+  position: relative;
+}
+.job-about-title {
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  margin-top: 18px;
+}
+.job-about-us {
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  margin-top: 5px;
+}
+.job-about-paragraph {
+  font-weight: 300;
+  color: rgb(0, 0, 0);
+  margin-top: 5px;
+  line-height: 18px;
+  overflow: hidden;
+  height: 196px;
+}
+.job-about-view-more {
+  font-weight: 200;
+  color: rgb(86, 97, 196);
+  font-weight: 400;
+  cursor: pointer;
+}
+.job-about-gradient-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 86px;
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 252, 252, 0.349),
+    rgb(255, 255, 255)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.job-min-experience {
+  margin-top: 20px;
+}
+.job-jd-experience {
+  margin-top: 10px;
+  font-weight: 200;
+}
+.job-card-action {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
