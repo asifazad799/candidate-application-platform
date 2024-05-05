@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { useDebouncedValue } from "../../../../hooks/common";
+import { useDebouncedValue } from "../../../../hooks";
 
 import "./job-filter-container.css";
 
-import { CustomAutocomplete } from "../../../input";
+import { CustomAutocomplete, TextInput } from "../../../input";
 
 const filterStatic = {
   jobRole: [
@@ -36,17 +36,23 @@ const filterStatic = {
 
 export function UseJobFilter() {
   const [filter, setFilter] = useDebouncedValue({
-    role: [],
-    minExp: null,
-    minJdSalary: null,
-    jobType: "",
-    location: "",
-    companyName: "",
+    initValue: {
+      role: [],
+      minExp: null,
+      minJdSalary: null,
+      jobType: "",
+      location: "",
+      companyName: "",
+    },
   });
 
   const handleChange = ({ key, value }) => {
     setFilter((prev) => ({ ...prev, [key]: value }));
   };
+
+  useEffect(() => {
+    console.log(filter, "shshsh");
+  }, [filter]);
 
   const renderFilter = () => {
     return (
@@ -92,6 +98,13 @@ export function UseJobFilter() {
           options={filterStatic.location}
           multiple={false}
           style={{ width: "200px" }}
+        />
+        <TextInput
+          label="Company Name"
+          // value={filter?.companyName}
+          onChange={(e) => {
+            handleChange({ key: "companyName", value: e?.target?.value });
+          }}
         />
       </div>
     );
