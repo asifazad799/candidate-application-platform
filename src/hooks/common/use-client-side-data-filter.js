@@ -2,66 +2,40 @@ import { useMemo } from "react";
 
 export function useClientSideDataFilter({ data, filter }) {
   const newData = useMemo(() => {
-    let newData = data || [];
+    if (!data) return []; // Return empty array if data is not available
 
-    let jobRole = filter?.jobRole?.map((role) => role?.value);
-    let jobType = filter?.jobType?.map((role) => role?.value);
-    let jobLocation = filter?.location?.map((role) => role?.value);
-    const regex = new RegExp(filter?.companyName, "i"); // "i" for case-insensitive matching
+    const filteredData = data.filter((job) => {
+      // Apply all filtering conditions in a single iteration
+      const meetsJobRole =
+        !filter?.jobRole?.length ||
+        filter?.jobRole?.map((item) => item?.value)?.includes(job?.jobRole);
+      const meetsJobType =
+        !filter.jobType?.length ||
+        filter.jobType.map((item) => item?.value).includes(job.location) ||
+        (filter.jobType.map((item) => item?.value).includes("on-site") &&
+          job.location !== "remote");
+      const meetsCompanyName =
+        !filter?.companyName ||
+        new RegExp(filter?.companyName, "i").test(job?.companyName);
+      const meetsJobLocation =
+        !filter?.location?.length ||
+        filter?.location?.map((item) => item?.value).includes(job?.location);
+      const meetsMinExp =
+        !filter?.minExp || job?.minExp >= filter?.minExp?.value;
+      const meetsMinJdSalary =
+        !filter?.minJdSalary || job?.minJdSalary >= filter?.minJdSalary.value;
 
-    if (jobType?.length > 0 && jobType?.length != 2) {
-      newData = data?.filter((job) => {
-        if (jobType?.includes(job?.location)) {
-          return job;
-        }
+      return (
+        meetsJobRole &&
+        meetsCompanyName &&
+        meetsJobLocation &&
+        meetsJobType &&
+        meetsMinExp &&
+        meetsMinJdSalary
+      );
+    });
 
-        if (jobType.includes("on-site") && job?.location != "remote") {
-          return job;
-        }
-      });
-    }
-
-    if (filter?.companyName) {
-      newData = newData?.filter((job) => {
-        if (regex.test(job?.companyName)) {
-          return job;
-        }
-      });
-    }
-
-    if (jobRole?.length > 0) {
-      newData = newData?.filter((job) => {
-        if (jobRole?.includes(job?.jobRole)) {
-          return job;
-        }
-      });
-    }
-
-    if (jobLocation?.length > 0) {
-      newData = newData?.filter((job) => {
-        if (jobLocation?.includes(job?.location)) {
-          return job;
-        }
-      });
-    }
-
-    if (filter?.minExp?.value) {
-      newData = newData?.filter((job) => {
-        if (job?.minExp >= filter?.minExp?.value) {
-          return job;
-        }
-      });
-    }
-
-    if (filter?.minJdSalary?.value) {
-      newData = newData?.filter((job) => {
-        if (job?.minJdSalary >= filter?.minJdSalary?.value) {
-          return job;
-        }
-      });
-    }
-
-    return newData;
+    return filteredData || data;
   }, [data?.length, filter]);
 
   return { newData };
