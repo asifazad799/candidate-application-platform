@@ -15,8 +15,7 @@ const fetchData = async ({ queryKey, pageParam }) => {
 export function useInfinityScroll({ url, body }) {
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading, isError } =
     useInfiniteQuery([url, body], fetchData, {
-      getNextPageParam: (lastPage, pages, pageParam) => {
-        console.log(pages, lastPage, "sshhshF");
+      getNextPageParam: (lastPage, pages) => {
         return pages.length + 1;
       },
       //TODO: enable this when the api is ready
