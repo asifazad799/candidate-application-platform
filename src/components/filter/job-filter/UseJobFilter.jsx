@@ -19,6 +19,10 @@ const filterStatic = {
     { title: "3", value: 3 },
   ],
   minJdSalary: [
+    { title: "10k", value: 10 },
+    { title: "20k", value: 20 },
+    { title: "30k", value: 30 },
+    { title: "40k", value: 40 },
     { title: "50k", value: 50 },
     { title: "60k", value: 60 },
     { title: "100k", value: 100 },
@@ -40,8 +44,8 @@ export function UseJobFilter({ data }) {
       role: [],
       minExp: null,
       minJdSalary: null,
-      jobType: "",
-      location: "",
+      jobType: [],
+      location: [],
       companyName: "",
     },
   });
@@ -92,7 +96,6 @@ export function UseJobFilter({ data }) {
             handleChange({ key: "location", value: data });
           }}
           options={filterStatic.location}
-          multiple={false}
           style={{ width: "200px" }}
         />
         <TextInput

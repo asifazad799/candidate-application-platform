@@ -17,7 +17,7 @@ function LandingPage() {
   });
   const { filter, renderFilter } = UseJobFilter({});
 
-  const {} = useClientSideDataFilter({ data: data, filter: filter });
+  const { newData } = useClientSideDataFilter({ data: data, filter: filter });
 
   return (
     <div className="job-list">
@@ -42,7 +42,7 @@ function LandingPage() {
         className="job-list-container"
         // height={"800px"} use height to customize the height
       >
-        {data?.map((jd) => {
+        {newData?.map((jd) => {
           return <JobCard key={jd?.jdUid} jobData={jd} />;
         })}
       </InfiniteScroll>
