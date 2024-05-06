@@ -1,5 +1,6 @@
-import axios from "axios";
 import { useInfiniteQuery } from "react-query";
+
+import { API } from "../config";
 
 const fetchData = async ({ queryKey, pageParam }) => {
   const data = queryKey[1];
@@ -7,10 +8,7 @@ const fetchData = async ({ queryKey, pageParam }) => {
     data.offset = pageParam.offset;
   }
 
-  const response = await axios.post(
-    `https://api.weekday.technology/${queryKey[0]}`,
-    data
-  );
+  const response = await API.post(`${queryKey[0]}`, data);
   return response.data;
 };
 
