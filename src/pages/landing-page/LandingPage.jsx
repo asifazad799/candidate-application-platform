@@ -11,19 +11,25 @@ import { JobCard, UseJobFilter } from "../../components";
 function LandingPage() {
   const [params, setParams] = useState({ limit: 9, offset: 0 });
 
-  const { data, fetchNextPage, hasNextPage, isLoading } = useInfinityScroll({
-    url: "adhoc/getSampleJdJSON",
-    body: { limit: 9, offset: 0 },
-  });
+  const { data, fetchNextPage, hasNextPage, isLoading, latestData } =
+    useInfinityScroll({
+      url: "/adhoc/getSampleJdJSON",
+      body: { limit: 9, offset: 0 },
+      currentOffset: params?.offset + 9,
+    });
   const { filter, renderFilter } = UseJobFilter({});
 
-  const { newData } = useClientSideDataFilter({ data: data, filter: filter });
+  const { newData } = useClientSideDataFilter({
+    data: data,
+    filter: filter,
+    latestData: latestData,
+  });
 
   return (
     <div className="job-list">
       {renderFilter()}
       <InfiniteScroll
-        dataLength={data?.length}
+        dataLength={data?.length || 0}
         next={() => {
           fetchNextPage({ pageParam: { offset: params.offset + 9 } }).then(
             () => {
