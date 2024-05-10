@@ -52,11 +52,13 @@ export function useClientSideDataFilter({ data, filter, latestData = [] }) {
   useEffect(() => {
     // if (!data) return []; // Return empty array if data is not available
 
-    console.log("new data came", latestData);
+    if (latestData) {
+      console.log("new data came", latestData);
 
-    const filteredData = filterData({ data: latestData, filter });
+      const filteredData = filterData({ data: latestData, filter });
 
-    setOldData((prev) => [...prev, ...(filteredData || latestData || [])]);
+      setOldData((prev) => [...prev, ...(filteredData || latestData || [])]);
+    }
 
     // return filteredData || data;
   }, [latestData]);
