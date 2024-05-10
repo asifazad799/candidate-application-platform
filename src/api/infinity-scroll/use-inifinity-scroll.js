@@ -26,7 +26,7 @@ export function useInfinityScroll({ url, body, currentOffset }) {
         }
       },
       //TODO: enable this when the api is ready
-      enabled: false,
+      // enabled: false,
     });
 
   const _data = [];
