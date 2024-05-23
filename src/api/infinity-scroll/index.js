@@ -1,1 +1,1 @@
-export * from "./use-inifinity-scroll";
+export * from "./use-inifinity-scroll.js";

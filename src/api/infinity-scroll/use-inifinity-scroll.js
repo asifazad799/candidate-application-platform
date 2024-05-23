@@ -12,11 +12,18 @@ const fetchData = async ({ queryKey, pageParam }) => {
   return response.data;
 };
 
-export function useInfinityScroll({ url, body }) {
+export function useInfinityScroll({ url, body, currentOffset }) {
+  let latestData;
+
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading, isError } =
     useInfiniteQuery([url, body], fetchData, {
       getNextPageParam: (lastPage, pages) => {
-        return pages.length + 1;
+        latestData = lastPage?.jdList;
+        if (currentOffset > lastPage?.totalCount) {
+          return false;
+        } else {
+          return true;
+        }
       },
       //TODO: enable this when the api is ready
       // enabled: false,
@@ -34,5 +41,6 @@ export function useInfinityScroll({ url, body }) {
     isLoading: isFetching || isLoading,
     isError,
     total: _data?.totalCount,
+    latestData: latestData,
   };
 }
